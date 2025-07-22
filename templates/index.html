@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
+    <script>
+        document.getElementById('shareButton').addEventListener('click', async () => {
+            try {
+                const shareData = {
+                    title: 'My QR Code',
+                    text: 'Check out this QR Code!',
+                    url: "{{ qr_code_url }}"  // Use the URL of the generated QR code
+                };
+    
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                    alert('QR Code shared successfully!');
+                } else {
+                    alert('Sharing not supported on this browser. Copy the URL manually: {{ qr_code_url }}');
+                }
+            } catch (err) {
+                console.error('Error sharing:', err);
+            }
+        });
+    </script>
+    
+    
+    
+    <title>QR Code Generator</title>
+    
+</head>
+<body>
+    <nav class="navbar">
+        <ul class = navbar-left>
+            <li><a href ='#'>Home</a></li>
+        </ul>
+
+        {% if current_user.is_authenticated%}
+
+        <ul class="navbar-user">
+            <li><a href="#">Logout</a>/li>
+        </ul>
+
+        {% else %}
+
+        <ul class="navbar-right">
+            <li><a href ="{{url_for('login')}}">Login</a></li>
+            <li><a href="{{url_for('signup')}}">Signup</a></li>
+        </ul>
+    </nav>
+        {% endif %}
+
+    <div class="title">
+        <h1>Welcome to QR code generator</h1>
+        
+    </div>
+
+    <div class="container">
+        <div class="rows">
+            <div class="row">
+                <div class="row-header">
+                <h3>Insert a URL or text below to generate your QR code</h3>
+                </div>
+                <div class="row-body">
+                    <form id="qr-form" action="/generate" method="POST" enctype="multipart/form-data">
+                    <input type="text" id="link" name="link" placeholder="Enter a link or text" required >
+
+                    <div class="customization">
+                        <label for="box_size">Box Size:</label><br>
+                        <input type="number" id="box_size" name="box_size" value="10" max="10" min="1" ><br><br>
+
+                        <label for="border_size">Border Size:</label><br>
+                        <input type="number" id="border_size" name="border_size" value="4" max="4" min="1" ><br><br>
+                        <label for="error_correction">Error Correction Level:</label><br>
+                        <select id="error_correction" name="error_correction" >
+                            <option value="L">Low (L)</option>
+                            <option value="M" selected>Medium (M)</option>
+                            <option value="Q">Quartile (Q)</option>
+                            <option value="H">High (H)</option>
+                        </select><br><br>
+
+                        <label for="foreground_color">Foreground Color:</label><br>
+                        <input type="color" id="foreground_color" name="foreground_color" value="#000000" > <br><br>
+
+                        <label for="background_color">Background Color:</label><br>
+                        <input type="color" id="background_color" name="background_color" value="#ffffff" ><br><br>
+
+                        <label for="logo">Upload Logo (optional):</label><br>
+                        <input type="file" id="logo" name="logo" accept="image/*"><br><br>
+
+                        <input type="submit" value="Generate QR code">
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                {% if data %}
+                <div class="row-header">
+                <h3>Here is your QR code</h3>
+                </div>
+                <div class="row-body">
+                    <div class="generated">
+                    <img src="{{data}}" alt="QR code"/>
+                    <a href="{{data}}" download><button>Download QR code</button></a><br>
+                    {% if qr_code_url %}
+                    <a href="{{qr_code_url}}" target="_blank"><button >Share QR Code</button></a><br> 
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{qr_code_url}}&quote=Check%20out%20this%20QR%20code!" target="_blank"><button>Share on Facebook</button></a><br>
+                    <a href="mailto:your.email@example.com?subject=Check%20out%20this%20QR%20code&body=Here%20is%20your%20QR%20code:%20{{qr_code_url}}" target="_blank"><button>Share on Gmail</button></a><br>
+                    <a href="https://wa.me/?text=Check%20out%20this%20QR%20code:%20{{qr_code_url}}" target="_blank"><button>Share on WhatsApp</button></a>
+
+                    {% endif %}
+
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+         </div>
+    </div>
+   
+</body>
+</html>
+
+

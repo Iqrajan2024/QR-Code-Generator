@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"/>
+    <title>Signup Page</title>
+
+</head>
+<body>
+    <nav class="navbar">
+        <ul class = navbar-left>
+            <li><a href ='#Home'>Home</a></li>
+        </ul>
+
+        <ul class="navbar-right">
+            <li><a href ="{{url_for('login')}}">Login</a></li>
+            <li><a href="{{url_for('signup')}}">Signup</a></li>
+        </ul>
+    </nav>
+    
+    <div class="form-container">
+           <h2>Sign up form</h2>
+           <p>Set up your account</p>
+           <br>
+        <form id="signup-form" method="POST" action="{{url_for('signup')}}">
+        
+
+            <input type="text" id="username" name="username" placeholder="Username" required="required">
+            <input type="password" id="password" name="password" placeholder="Password" required="required">
+            <input type="submit" value="Sign Up">
+            <p>Already have an account?</p>
+            <a href = "{{url_for('login')}}">Login here</a>
+
+        
+        </form>
+
+    </div>
+    
+   
+</body>
+</html>

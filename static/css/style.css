@@ -1,0 +1,229 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    margin: 0;
+    padding: 0;
+    font-family: "poppins" , sans-serif;
+
+}
+
+.navbar{
+    background-color: #005B9A;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.navbar-left{
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-right{
+    display: flex;
+    list-style-type:none ;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li{
+    margin: 0 10px;
+    float: left;
+    text-align: center;
+    padding: 6px 14px;
+
+}
+.navbar a{
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 10;
+    display: inline-block;
+}
+
+
+
+.navbar li :hover{
+   background-color: #8C8984;
+}
+
+.navbar li.active{
+    background-color: #04AA6D;
+    color: white;
+}
+
+
+.title{
+    padding: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    color: rgb(37, 37, 37);
+}
+
+
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.rows{
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.row{
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    
+    text-align: center;
+}
+#qr-form{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+#qr-form input[type=text]{
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    width: 50%;
+    background: white;
+    color: black;
+    border: 3px solid black;
+}
+
+#qr-form input[type=text]:focus{
+    border: solid 5px #0056b3;
+    outline: none;
+}
+#qr-form input[type=submit]{
+    font-size: 1rem;
+    background: #0191C8 ;
+    border: none;
+    color: white;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}
+
+#qr-form input[type=submit]:hover{
+    background-color: #0056b3;
+}
+.generated{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.generated button{
+    font-size: 1rem;
+    background: #0191C8 ;
+    border: none;
+    color: white;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    text-decoration: none;
+
+}
+
+.generated button:hover{
+    background-color: #0056b3;
+
+}
+
+
+ h1 {
+     text-align: center; 
+     color: #333; 
+    } 
+
+.form-container{
+    background-color: #005B9A;
+    margin: auto;
+    
+    width: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 10px;
+
+    
+    
+}
+
+
+#login-form, #signup-form  {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 20px;
+    
+
+}
+#login-form form-label, #signup-form form-label{
+
+    text-align: left;
+    margin-bottom: 5px;
+    
+    
+}
+
+
+#login-form input[type=text], input[type=password], #signup-form input[type=text], input[type=password]{ 
+    
+    width: 100%;
+    padding:  10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    
+    
+    
+} 
+
+
+#login-form input[type=submit],#signup-form input[type=submit] { 
+    display: block; 
+    width: 100%; 
+    color: white; 
+    padding: 10px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    text-align: center; 
+    background-color: #0191C8; 
+} 
+#login-form  button[type=submit]:hover,#signup-form button[type=submit]:hover { 
+    background-color: #0056b3;
+}
